@@ -8,6 +8,10 @@ jobs:
     name: Build - ${{ matrix.platform.target }}
     runs-on: ${{ matrix.platform.os }}
 
+    # To publish the releases
+    permissions:
+      contents: write
+
     strategy:
       fail-fast: false
       matrix:
@@ -20,15 +24,27 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
       - name: Build binary
         uses: houseabsolute/actions-rust-cross@v0
         with:
           target: ${{ matrix.platform.target }}
           args: "--release"
           strip: true
+
       - name: Upload binary
         uses: actions/upload-artifact@v4
         with:
           name: pgextract-${{ matrix.platform.target }}
           path: target/${{ matrix.platform.target }}/release/pgextract
+
+      - run: cp target/${{ matrix.platform.target }}/release/pgextract pgextract-${{ matrix.platform.target }}
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: "pgextract-*"
+          body_path: CHANGELOG.md
+        if: startsWith( github.ref, 'refs/tags/v' )

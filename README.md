@@ -1,6 +1,6 @@
 # pgextract
 
-`pgextract` is a command-line utility to load or extract large or small amounts data from PostgreSQL in various formats.
+`pgextract` is a command-line utility that loads or extracts large or small amounts of data from PostgreSQL in various formats.
 
 ## Download
 
@@ -20,7 +20,7 @@ Unlike many databases, the `psql` CLI only supports text, csv and proprietary bi
 
 ## Performance
 
-Same as psql with quick testing
+`pgextract` can do 200MB/s+, and its performance is almost always limited by how fast the PostgreSQL server can stream the data.
 
 ## Supported formats
 
