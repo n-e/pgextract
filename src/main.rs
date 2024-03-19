@@ -4,11 +4,11 @@ use std::{
 };
 
 use clap::{Parser, Subcommand, ValueEnum};
-use openssl::ssl::{SslConnector, SslMethod};
+use native_tls::TlsConnector;
 use postgres::{
     binary_copy::BinaryCopyOutIter, fallible_iterator::FallibleIterator, types::Type, Client,
 };
-use postgres_openssl::MakeTlsConnector;
+use postgres_native_tls::MakeTlsConnector;
 use regex::Regex;
 
 #[derive(Parser, Debug)]
@@ -41,8 +41,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     match args.command {
         Commands::Extract { url, format, query } => {
-            let builder = SslConnector::builder(SslMethod::tls())?;
-            let connector = MakeTlsConnector::new(builder.build());
+            let builder = TlsConnector::builder().build()?;
+            let connector = MakeTlsConnector::new(builder);
             let mut client = Client::connect(&url, connector)?;
 
             // On check que la query est compilable
