@@ -1,0 +1,9 @@
+version: "3.1"
+
+services:
+  db:
+    image: postgres:16.1
+    environment:
+      POSTGRES_PASSWORD: example # postgres://postgres:example@localhost
+    ports:
+      - 5432:5432
