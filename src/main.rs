@@ -61,6 +61,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             iter.for_each(|row| {
                 let data: String = row.get(0);
                 out.write_all(data.as_bytes()).unwrap();
+                out.write_all(b"\n").unwrap();
                 Ok(())
             })?;
 

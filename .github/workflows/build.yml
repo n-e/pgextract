@@ -1,4 +1,4 @@
-name: Build
+name: Push
 
 on:
   push:
@@ -18,16 +18,23 @@ jobs:
         platform:
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-22.04
+            command: both
 
           - target: aarch64-unknown-linux-gnu
             os: ubuntu-22.04
+            command: build
 
           - target: aarch64-apple-darwin
             os: macos-14
+            command: build
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Start PG for the tests
+        run: docker compose up -d
+        if: ${{ matrix.platform.command == 'both' }}
 
       - name: Build binary
         uses: houseabsolute/actions-rust-cross@v0
@@ -35,6 +42,7 @@ jobs:
           target: ${{ matrix.platform.target }}
           args: "--release"
           strip: true
+          command: ${{ matrix.platform.command }}
 
       - name: Upload binary
         uses: actions/upload-artifact@v4
