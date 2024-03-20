@@ -1,4 +1,4 @@
-## (main) - XXXX-XX-XX
+## 0.2.1 - 2024-03-20
 
 - Add tests
 - Fix missing newlines in NDJSON
