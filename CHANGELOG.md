@@ -1,4 +1,4 @@
-## (main) - xxxx-xx-xx
+## 0.2.0 - 2024-03-20
 
 - Add linux aarch64 support
 - Statically link openssl on linux (to avoid dependency problems)
