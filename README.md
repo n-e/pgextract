@@ -24,6 +24,8 @@ Unlike many databases, the `psql` CLI only supports text, csv and proprietary bi
 
 ## Supported formats
 
+Right now `pgextract` only supports extracting data to NDJSON, but I plan to add relevant formats shortly.
+
 | Format                 | Load |  Extract |
 | ---------------------- | ---- | -------- |
 | Newline-delimited JSON | ❌   | ✅       |
