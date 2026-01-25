@@ -1,3 +1,7 @@
+## 0.3.0 - 2026-01-25
+
+- Rewrite the extraction code
+
 ## 0.2.1 - 2024-03-20
 
 - Add tests
