@@ -1,31 +1,21 @@
-# pgextract
-
-`pgextract` is a command-line utility that loads or extracts large or small amounts of data from PostgreSQL in various formats.
+# pgextract - Load & Extract newline-delimited JSON from PostgreSQL
 
 ## Download
 
-Get the binary for your platform from the releases page
+Get the binary for your platform on the releases page
 
 ## Run
 
 ```bash
-pgextract extract --url postgres://postgres:example@localhost  --format ndjson 'select * from t'   > out.ndjson
+pgextract extract --url postgres://postgres:example@localhost 'select * from t' > out.ndjson
 ```
 
-## Rationale
+## Why pgextract?
 
-Unlike many databases, the `psql` CLI only supports text, csv and proprietary binary input and input formats via the `COPY` command.
+- A well-defined file-format. No more CSVs
+- Export or Load huge tables
+- Great Performance (>200MB/s in many cases). You will be limited by the I/O speed.
 
-`pgextract` aims to fill this gap, by supporting input and output in common big data formats.
+## Recipes
 
-## Performance
-
-`pgextract` can do 200MB/s+, and its performance is almost always limited by how fast the PostgreSQL server can stream the data.
-
-## Supported formats
-
-Right now `pgextract` only supports extracting data to NDJSON, but I plan to add relevant formats shortly.
-
-| Format                 | Load |  Extract |
-| ---------------------- | ---- | -------- |
-| Newline-delimited JSON | ❌   | ✅       |
+Coming Soon
