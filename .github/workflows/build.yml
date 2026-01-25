@@ -37,7 +37,7 @@ jobs:
         if: ${{ matrix.platform.command == 'both' }}
 
       - name: Build binary
-        uses: houseabsolute/actions-rust-cross@v0
+        uses: houseabsolute/actions-rust-cross@v1
         with:
           target: ${{ matrix.platform.target }}
           args: "--release"
