@@ -14,7 +14,7 @@ native-tls = { version = "0.2.11", features = ["vendored"] }
 pin-project-lite = "0.2.16"
 postgres-native-tls = "0.5.0"
 postgres-protocol = "0.6.10"
-regex = "1.10.3"
+regex = "1.12.3"
 serde = "1.0.228"
 serde_json = { version = "1.0.149", features = ["preserve_order"] }
 tokio = { version = "1.49.0", features = ["full"] }
