@@ -9,7 +9,7 @@ edition = "2024"
 assert_cmd = "2.0.14"
 bytes = "1.11.0"
 chrono = "0.4.43"
-clap = { version = "4.5.3", features = ["derive"] }
+clap = { version = "4.5.58", features = ["derive"] }
 native-tls = { version = "0.2.11", features = ["vendored"] }
 pin-project-lite = "0.2.16"
 postgres-native-tls = "0.5.0"
